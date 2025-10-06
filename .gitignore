@@ -1,0 +1,62 @@
+# ===============================
+# Build artifacts and binaries
+# ===============================
+/build/
+/bin/
+/lib/
+/*.exe
+/*.dll
+/*.so
+/*.dylib
+/*.obj
+/*.o
+/*.pdb
+/*.ilk
+/*.idb
+/*.exp
+
+# ===============================
+# CMake temporary files
+# ===============================
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+*.cmake.user
+*.log
+
+# ===============================
+# vcpkg installed dependencies
+# ===============================
+/vcpkg_installed/
+/vcpkg/buildtrees/
+/vcpkg/downloads/
+
+# ===============================
+# IDE / Editor files
+# ===============================
+.vscode/
+*.suo
+*.user
+*.userosscache
+*.VC.db
+*.VC.opendb
+
+# ===============================
+# OS files
+# ===============================
+Thumbs.db
+.DS_Store
+
+# ===============================
+# Temporary files
+# ===============================
+*.tmp
+*.swp
+*.bak
+*.log
+
+# ===============================
+# User file
+# ===============================
+CMakeUserPresets.json
