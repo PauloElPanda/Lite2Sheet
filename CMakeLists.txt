@@ -13,5 +13,6 @@ add_subdirectory(src/lib)
 add_executable(Lite2Sheet src/main.cpp)
 
 target_link_libraries(Lite2Sheet PRIVATE 
+    files_lib
     sqlite_lib
 )

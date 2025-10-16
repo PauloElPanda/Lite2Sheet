@@ -1,0 +1,9 @@
+{
+    "input": {
+        "path": "input/database.db"
+    },
+    "output": {
+        "directory": "output",
+        "format": "xlsx"
+    }
+}
