@@ -1,29 +1,26 @@
 #include <filesystem>
+#include <memory>
 #include <files.hpp>
 
 namespace fs = std::filesystem;
 
-int testJson()
+std::unique_ptr<IConfigReader> getConfig(const fs::path& path)
 {
     try 
     {
-        auto config = ConfigFactory::create("config.json");
-        if (!config->load("config.json")) 
+        auto config = ConfigFactory::create(path.string());
+        if (!config->load(path.string())) 
         {
-            fmt::print(stderr, "Failed to load configuration\n");
-            return 1;
+            fmt::print(stderr, "Failed to load configuration: {}\n", path.string());
+            return nullptr;
         }
 
-        std::string inputPath = config->get("input", "path", "input/default.db");
-        std::string outputDir = config->get("output", "directory", "output");
-
-        fmt::print("Input Path: {}\n", inputPath);
-        fmt::print("Output Dir: {}\n", outputDir);
+        return config;
     } 
     catch (const std::exception& e) 
     {
-        fmt::print(stderr, "Error: {}\n", e.what());
-        return 1;
+        fmt::print(stderr, "Error loading configuration: {}\n", e.what());
+        return nullptr;
     }
 }
 
@@ -46,17 +43,21 @@ inline void ensureDirectory(const fs::path& path) {
 
 int filesManagement()
 {
-    fs::path inputDir = "input";
-    fs::path outputDir = "output";
+    fs::path inputDir               = "input";
+    fs::path outputDir              = "output";
+    fs::path configFileName         = "config.json";
+    fs::path configDir              = inputDir / configFileName;
 
-    // Check and create input directory
+    // Check and create input & output directories
     ensureDirectory(inputDir);
-
-    // Check and create output directory
     ensureDirectory(outputDir);
-
     fmt::print("All directories verified.\n");
 
-    
+    auto config = getConfig(configDir);
+    if (!config) {
+        // TODO: handle error
+        return -1;
+    }
+
     return 0;
 }
