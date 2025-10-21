@@ -3,7 +3,7 @@
 
 int main()
 {
-    testJsonMng();
+    filesManagement();
     testSqlite();
     return 0;
 }
