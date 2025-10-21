@@ -14,4 +14,4 @@ target_include_directories(Lite2Sheet_Config_lib PUBLIC ${PROJECT_SOURCE_DIR}/in
 
 target_link_libraries(Lite2Sheet_Config_lib PRIVATE nlohmann_json::nlohmann_json)
 target_include_directories(Lite2Sheet_Config_lib PRIVATE ${SIMPLEINI_INCLUDE_DIRS})
-target_link_libraries(Lite2Sheet_Config_lib PUBLIC fmt::fmt)
+target_link_libraries(Lite2Sheet_Config_lib PRIVATE fmt::fmt)

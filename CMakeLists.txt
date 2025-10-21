@@ -6,12 +6,18 @@ set(PROJECT_SOURCE_DIR .)
 
 find_package(fmt CONFIG REQUIRED)
 
+# Enable testing
+enable_testing()
+
 # Add include directory
 include_directories(${PROJECT_SOURCE_DIR}/inc)
 
 # Add subdirectory for the libs
 add_subdirectory(src/ConfigReader)
 add_subdirectory(src/lib)
+
+# Add tests subdirectory
+add_subdirectory(tests)
 
 add_executable(Lite2Sheet src/main.cpp)
 
