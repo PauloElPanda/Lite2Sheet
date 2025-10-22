@@ -25,3 +25,7 @@ This project uses:
 - C++20 compatible compiler (MSVC, GCC, or Clang)
 
 ---
+
+## Releases
+
+This project is still in its infancy, there's no release yet.
