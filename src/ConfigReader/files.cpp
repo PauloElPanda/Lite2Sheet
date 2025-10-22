@@ -1,8 +1,21 @@
-#include <filesystem>
-#include <memory>
 #include <files.hpp>
 
-namespace fs = std::filesystem;
+inline void ensureDirectory(const fs::path& path) {
+    fs::path dir(path);
+    if (!fs::exists(dir)) 
+    {
+        fmt::print("Creating directory: {}\n", path.string());
+        fs::create_directories(dir);
+    } 
+    else if (!fs::is_directory(dir)) 
+    {
+        fmt::print(stderr, "Path exists but is not a directory: {}\n", path.string());
+    } 
+    else 
+    {
+        fmt::print("Directory already exists: {}\n", path.string());
+    }
+}
 
 std::unique_ptr<IConfigReader> getConfig(const fs::path& path)
 {
@@ -21,23 +34,6 @@ std::unique_ptr<IConfigReader> getConfig(const fs::path& path)
     {
         fmt::print(stderr, "Error loading configuration: {}\n", e.what());
         return nullptr;
-    }
-}
-
-inline void ensureDirectory(const fs::path& path) {
-    fs::path dir(path);
-    if (!fs::exists(dir)) 
-    {
-        fmt::print("Creating directory: {}\n", path.string());
-        fs::create_directories(dir);
-    } 
-    else if (!fs::is_directory(dir)) 
-    {
-        fmt::print(stderr, "Path exists but is not a directory: {}\n", path.string());
-    } 
-    else 
-    {
-        fmt::print("Directory already exists: {}\n", path.string());
     }
 }
 
