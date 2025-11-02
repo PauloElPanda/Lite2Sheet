@@ -1,6 +1,10 @@
 #include <files.hpp>
 
-inline void ensureDirectory(const fs::path& path) {
+inline void ensureDirectory(const fs::path& path) 
+{
+    /*
+    *   Ensure that the directory exist
+    */
     fs::path dir(path);
     if (!fs::exists(dir)) 
     {
@@ -24,6 +28,7 @@ std::unique_ptr<IConfigReader> getConfig(const fs::path& path)
         auto config = ConfigFactory::create(path.string());
         if (!config->load(path.string())) 
         {
+            // TODO?: Config .json / .ini should follow a template ?
             fmt::print(stderr, "Failed to load configuration: {}\n", path.string());
             return nullptr;
         }
@@ -37,8 +42,12 @@ std::unique_ptr<IConfigReader> getConfig(const fs::path& path)
     }
 }
 
-int filesManagement()
+int filesManagement(auto *config)
 {
+    /*
+    *  Ensure that the directories 'input' & 'output' exist
+    *  Ensure that a 'config' file exist  
+    */ 
     fs::path inputDir               = "input";
     fs::path outputDir              = "output";
     fs::path configFileName         = "config.json";
@@ -50,7 +59,8 @@ int filesManagement()
     fmt::print("All directories verified.\n");
 
     auto config = getConfig(configDir);
-    if (!config) {
+    if (!config) 
+    {
         // TODO: handle error
         return -1;
     }
