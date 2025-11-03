@@ -11,7 +11,7 @@ sqlite3* getOrCreateDatabase(const fs::path& dbPath)
     int rc = sqlite3_open(dbPath.string().c_str(), &db);
     if (rc != SQLITE_OK)
     {
-        fmt::print(stderr, "❌ Failed to open database '{}': {}\n", 
+        fmt::print(stderr, "Failed to open database '{}': {}\n", 
                    dbPath.string(), sqlite3_errmsg(db));
         sqlite3_close(db);
         return nullptr;
@@ -33,17 +33,17 @@ sqlite3* getOrCreateDatabase(const fs::path& dbPath)
         rc = sqlite3_exec(db, createTableSQL, nullptr, nullptr, &errMsg);
         if (rc != SQLITE_OK)
         {
-            fmt::print(stderr, "⚠️ Failed to initialize new DB: {}\n", errMsg);
+            fmt::print(stderr, "Failed to initialize new DB: {}\n", errMsg);
             sqlite3_free(errMsg);
         }
         else
         {
-            fmt::print("✅ Initialized new database schema.\n");
+            fmt::print("Initialized new database schema.\n");
         }
     }
     else
     {
-        fmt::print("📂 Database '{}' opened successfully.\n", dbPath.string());
+        fmt::print("Database '{}' opened successfully.\n", dbPath.string());
     }
 
     return db;

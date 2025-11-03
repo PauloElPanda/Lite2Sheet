@@ -1,4 +1,5 @@
 #include <configReader.hpp>
+#include <dataImporter.hpp>
 #include <sqlite.hpp>
 
 int main()
@@ -14,10 +15,11 @@ int main()
     
     // Get SQLite db, if it doesn't create an empty one
     fs::path dbPath = inputPath / dbfilename;
-    sqlite3* db = getOrCreateDatabase(dbPath);
+    sqlite3* db = getOrCreateDatabase(dbPath);      // TODO: Refactoring to fit SOLID arch
 
+    // Look for a .xlsx or .csv file as input and fill the db file
+    fillDatabaseWithInput(inputPath, dbPath);
 
-    // TODO: Look for a .xlsx or .csv file as input and fill the db file
     // TODO: Return in output the .xlsx file or .csv corresponding
 
     return 0;
