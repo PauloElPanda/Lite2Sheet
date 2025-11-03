@@ -1,4 +1,4 @@
-#include <files.hpp>
+#include <configReader.hpp>
 
 inline void ensureDirectory(const fs::path& path) 
 {
@@ -48,21 +48,18 @@ int filesManagement(std::unique_ptr<IConfigReader>& config)
     *  Ensure that the directories 'input' & 'output' exist
     *  Ensure that a 'config' file exist  
     */ 
-    fs::path inputDir               = "input";
-    fs::path outputDir              = "output";
-    fs::path configFileName         = "config.json";
-    fs::path configDir              = inputDir / configFileName;
-
-    // Check and create input & output directories
-    ensureDirectory(inputDir);
-    ensureDirectory(outputDir);
-    fmt::print("All directories verified.\n");
-
+    fs::path configDir = fs::path("input") / "config.json";
     config = getConfig(configDir);
     if (!config) 
     {
+        // TODO: Handle error
         return -1;
     }
+
+    // Check and create input & output directories
+    ensureDirectory(config->get("paths", "input_path"));
+    ensureDirectory(config->get("paths", "output_path"));
+    fmt::print("All directories verified.\n");
 
     return 0;
 }

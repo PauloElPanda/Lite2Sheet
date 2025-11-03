@@ -5,7 +5,7 @@ find_path(SIMPLEINI_INCLUDE_DIRS "ConvertUTF.c")
 set(nlohmann-json_IMPLICIT_CONVERSIONS OFF)
 
 add_library(Lite2Sheet_Config_lib STATIC 
-    files.cpp
+    configReader.cpp
     IniConfigReader.cpp
     JsonConfigReader.cpp
 )

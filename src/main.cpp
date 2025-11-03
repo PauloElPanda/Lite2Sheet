@@ -1,4 +1,4 @@
-#include <files.hpp>
+#include <configReader.hpp>
 #include <sqlite.hpp>
 
 int main()
@@ -18,7 +18,7 @@ int main()
 
 
     // TODO: Look for a .xlsx or .csv file as input and fill the db file
-    // TODO: Return in output the .xlsx file or .csv corresponding 
+    // TODO: Return in output the .xlsx file or .csv corresponding
 
     return 0;
 }
