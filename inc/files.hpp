@@ -12,4 +12,4 @@ namespace fs = std::filesystem;
 inline void ensureDirectory(const fs::path& path);
 std::unique_ptr<IConfigReader> getConfig(const fs::path& path);
 
-int filesManagement(auto *config);
+int filesManagement(std::unique_ptr<IConfigReader>& config);

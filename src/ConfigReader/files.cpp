@@ -42,7 +42,7 @@ std::unique_ptr<IConfigReader> getConfig(const fs::path& path)
     }
 }
 
-int filesManagement(auto *config)
+int filesManagement(std::unique_ptr<IConfigReader>& config)
 {
     /*
     *  Ensure that the directories 'input' & 'output' exist
@@ -58,10 +58,9 @@ int filesManagement(auto *config)
     ensureDirectory(outputDir);
     fmt::print("All directories verified.\n");
 
-    auto config = getConfig(configDir);
+    config = getConfig(configDir);
     if (!config) 
     {
-        // TODO: handle error
         return -1;
     }
 

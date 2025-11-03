@@ -59,6 +59,7 @@ Thumbs.db
 # ===============================
 # User file/folder
 # ===============================
+input/*
 output/*
 build.sh
 CMakeUserPresets.json
