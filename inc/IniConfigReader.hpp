@@ -1,9 +1,12 @@
 #pragma once
-#include "IConfigReader.hpp"
-#include <SimpleIni.h>
+// ddl
 #include <fmt/core.h>
+#include <SimpleIni.h>
+// local
+#include "IConfigReader.hpp"
 
-class IniConfigReader : public IConfigReader {
+class IniConfigReader : public IConfigReader 
+{
 private:
     CSimpleIniA ini;
 

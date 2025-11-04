@@ -1,4 +1,5 @@
 
+find_package(fmt CONFIG REQUIRED)
 find_package(nlohmann_json CONFIG REQUIRED)
 find_path(SIMPLEINI_INCLUDE_DIRS "ConvertUTF.c")
 

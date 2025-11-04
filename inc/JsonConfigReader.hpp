@@ -1,8 +1,11 @@
 #pragma once
-#include "IConfigReader.hpp"
-#include <nlohmann/json.hpp>
-#include <fmt/core.h>
+// std
 #include <fstream>
+// ddl
+#include <fmt/core.h>
+#include <nlohmann/json.hpp>
+// local
+#include "IConfigReader.hpp"
 
 class JsonConfigReader : public IConfigReader {
 private:

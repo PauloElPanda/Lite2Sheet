@@ -1,9 +1,11 @@
 #pragma once
+// std
+#include <memory>
+#include <string>
+// local
 #include "IConfigReader.hpp"
 #include "JsonConfigReader.hpp"
 #include "IniConfigReader.hpp"
-#include <memory>
-#include <string>
 
 class ConfigFactory {
 public:

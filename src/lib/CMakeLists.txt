@@ -3,6 +3,7 @@
 # sqlite_lib
 ##################
 
+find_package(fmt CONFIG REQUIRED)
 find_package(unofficial-sqlite3 CONFIG REQUIRED)
 
 # Define a small static library for the SQLite wrapper

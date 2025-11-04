@@ -4,8 +4,6 @@ project(Lite2Sheet LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 20)
 set(PROJECT_SOURCE_DIR .)
 
-find_package(fmt CONFIG REQUIRED)
-
 # Enable testing
 enable_testing()
 

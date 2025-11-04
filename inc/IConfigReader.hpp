@@ -1,8 +1,10 @@
 #pragma once
+// std
 #include <string>
 #include <unordered_map>
 
-class IConfigReader {
+class IConfigReader 
+{
 public:
     virtual ~IConfigReader() = default;
 
